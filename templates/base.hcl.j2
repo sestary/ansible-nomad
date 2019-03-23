@@ -26,12 +26,22 @@ consul {
     server_service_name = "{{ nomad_consul_servers_service_name }}"
     client_service_name = "{{ nomad_consul_clients_service_name }}"
 
+    # Consul token
+    token = "{{ nomad_consul_token }}"
+
     # Enables automatically registering the services.
     auto_advertise = true
 
     # Enabling the server and client to bootstrap using Consul.
     server_auto_join = true
     client_auto_join = true
+
+    {% if ( nomad_tls_enable ) %}
+    ca_file = "{{ nomad_tls_ca_crt }}"
+    cert_file = "{{ nomad_tls_server_crt }}"
+    key_file = "{{ nomad_server_key }}"
+    verify_ssl = "{{ nomad_consul_verify_ssl }}"
+    {% endif %}
 }
 {% endif %}
 
@@ -50,7 +60,7 @@ tls {
     rpc = true
     ca_file = "{{ nomad_tls_ca_crt }}"
     cert_file = "{{ nomad_tls_server_crt }}"
-    key_file = "{{ nomad_server_key }}"
+    key_file = "{{ nomad_tls_server_key }}"
     verify_server_hostname = "{{ nomad_verify_server_hostname }}"
     verify_https_client = "{{ nomad_verify_https_client }}"
 }

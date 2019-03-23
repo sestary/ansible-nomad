@@ -107,10 +107,11 @@ nomad_gather_server_facts: false
 
 ### Consul
 nomad_use_consul: false
+nomad_consul_token: ""
 nomad_consul_address: "localhost:8500"
 nomad_consul_servers_service_name: "nomad-servers"
 nomad_consul_clients_service_name: "nomad-clients"
-
+nomad_consul_verify_ssl: true
 
 ### ACLs
 nomad_acl_enabled: "{{ lookup('env', 'NOMAD_ACL_ENABLED') | default('no', true) }}"
@@ -124,10 +125,10 @@ nomad_vault_address: "{{ vault_address | default('0.0.0.0', true) }}"
 nomad_vault_allow_unauthenticated: true
 nomad_vault_create_from_role: ""
 nomad_vault_task_token_ttl: ""
-nomad_vault_ca_file: ""
-nomad_vault_ca_path: ""
-nomad_vault_cert_file: ""
-nomad_vault_key_file: ""
+nomad_vault_ca_file: "{{ nomad_tls_ca_crt }}"
+nomad_vault_ca_path: "{{ nomad_tls_dir }}"
+nomad_vault_cert_file: "{{ nomad_tls_server_crt }}"
+nomad_vault_key_file: "{{ nomad_tls_server_key }}"
 nomad_vault_tls_server_name: ""
 nomad_vault_tls_skip_verify: false
 nomad_vault_token: ""
@@ -144,7 +145,7 @@ nomad_tls_dir: "{{ lookup('env','NOMAD_TLS_DIR') | default('/etc/nomad/ssl', tru
 
 nomad_tls_ca_crt: "{{ lookup('env','NOMAD_TLS_CA_CRT') | default('ca.crt', true) }}"
 nomad_tls_server_crt: "{{ lookup('env','NOMAD_SERVER_CRT') | default('server.crt', true) }}"
-nomad_server_key: "{{ lookup('env','NOMAD_SERVER_KEY') | default('server.key', true) }}"
+nomad_tls_server_key: "{{ lookup('env','NOMAD_SERVER_KEY') | default('server.key', true) }}"
 nomad_tls_copy_keys: true
 
 nomad_verify_server_hostname: true
