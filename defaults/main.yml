@@ -139,8 +139,8 @@ nomad_docker_dmsetup: true
 
 ### TLS
 nomad_tls_enable: "{{ lookup('env','NOMAD_TLS_ENABLE') | default(false, true) }}"
+nomad_tls_config_path: "{{ lookup('env','VAULT_TLS_DIR') | default('/etc/nomad/tls', true) }}"
 nomad_tls_src_files: "{{ lookup('env','NOMAD_TLS_SRC_FILES') | default(role_path+'/files', true) }}"
-nomad_tls_dir: "{{ lookup('env','NOMAD_TLS_DIR') | default('/etc/nomad/ssl', true) }}"
 
 nomad_tls_ca_crt: "{{ lookup('env','NOMAD_TLS_CA_CRT') | default('ca.crt', true) }}"
 nomad_tls_server_crt: "{{ lookup('env','NOMAD_SERVER_CRT') | default('server.crt', true) }}"
