@@ -31,8 +31,8 @@
   - name: Copy server key
     copy:
       remote_src: "{{ nomad_tls_files_remote_src }}"
-      src: "{{ nomad_tls_src_files }}/{{ nomad_server_key }}"
-      dest: "{{ nomad_tls_dir }}/{{ nomad_server_key }}"
+      src: "{{ nomad_tls_src_files }}/{{ nomad_tls_server_key }}"
+      dest: "{{ nomad_tls_dir }}/{{ nomad_tls_server_key }}"
       owner: "{{ nomad_user }}"
       group: "{{ nomad_group }}"
       mode: 0600
