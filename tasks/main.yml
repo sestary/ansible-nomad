@@ -102,6 +102,10 @@
   notify:
     - restart nomad
 
+- name: Create TLS configuration
+  include_tasks: tls.yml
+  when: nomad_tls_enable | bool
+
 - name: SYSV init script
   template:
     src: nomad_sysvinit.j2

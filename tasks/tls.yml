@@ -1,0 +1,40 @@
+---
+# File: tls.yml - TLS tasks for nomad
+
+- name: Create SSL directory
+  file:
+    dest: "{{ nomad_tls_dir }}"
+    state: directory
+    owner: "{{ nomad_user }}"
+    group: "{{ nomad_group }}"
+    mode: 0755
+
+- block:
+  - name: Copy CA certificate
+    copy:
+      remote_src: "{{ nomad_tls_files_remote_src }}"
+      src: "{{ nomad_tls_src_files }}/{{ nomad_tls_ca_crt }}"
+      dest: "{{ nomad_tls_dir }}/{{ nomad_tls_ca_crt }}"
+      owner: "{{ nomad_user }}"
+      group: "{{ nomad_group }}"
+      mode: 0644
+
+  - name: Copy server certificate
+    copy:
+      remote_src: "{{ nomad_tls_files_remote_src }}"
+      src: "{{ nomad_tls_src_files }}/{{ nomad_tls_server_crt }}"
+      dest: "{{ nomad_tls_dir }}/{{ nomad_tls_server_crt }}"
+      owner: "{{ nomad_user }}"
+      group: "{{ nomad_group }}"
+      mode: 0644
+
+  - name: Copy server key
+    copy:
+      remote_src: "{{ nomad_tls_files_remote_src }}"
+      src: "{{ nomad_tls_src_files }}/{{ nomad_server_key }}"
+      dest: "{{ nomad_tls_dir }}/{{ nomad_server_key }}"
+      owner: "{{ nomad_user }}"
+      group: "{{ nomad_group }}"
+      mode: 0600
+
+  when: nomad_tls_copy_keys | bool

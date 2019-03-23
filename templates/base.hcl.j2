@@ -44,16 +44,13 @@ leave_on_terminate = {{ nomad_leave_on_terminate | bool | lower }}
 leave_on_interrupt = {{ nomad_leave_on_interrupt | bool | lower }}
 
 
-{% if ( nomad_ca_file ) and
-      ( nomad_cert_file ) and
-      ( nomad_key_file )
-%}
+{% if ( nomad_tls_enable ) %}
 tls {
     http = true
     rpc = true
-    ca_file = "{{ nomad_ca_file }}"
-    cert_file = "{{ nomad_cert_file }}"
-    key_file = "{{ nomad_key_file }}"
+    ca_file = "{{ nomad_tls_ca_crt }}"
+    cert_file = "{{ nomad_tls_server_crt }}"
+    key_file = "{{ nomad_server_key }}"
     verify_server_hostname = "{{ nomad_verify_server_hostname }}"
     verify_https_client = "{{ nomad_verify_https_client }}"
 }
