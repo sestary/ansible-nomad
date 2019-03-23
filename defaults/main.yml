@@ -126,7 +126,7 @@ nomad_vault_allow_unauthenticated: true
 nomad_vault_create_from_role: ""
 nomad_vault_task_token_ttl: ""
 nomad_vault_ca_file: "{{ nomad_tls_ca_crt }}"
-nomad_vault_ca_path: "{{ nomad_tls_dir }}"
+nomad_vault_ca_path: "{{ nomad_tls_config_path }}"
 nomad_vault_cert_file: "{{ nomad_tls_server_crt }}"
 nomad_vault_key_file: "{{ nomad_tls_server_key }}"
 nomad_vault_tls_server_name: ""
