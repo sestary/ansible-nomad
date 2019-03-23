@@ -39,7 +39,7 @@ consul {
     {% if ( nomad_tls_enable ) %}
     ca_file = "{{ nomad_tls_ca_crt }}"
     cert_file = "{{ nomad_tls_server_crt }}"
-    key_file = "{{ nomad_server_key }}"
+    key_file = "{{ nomad_tls_server_key }}"
     verify_ssl = "{{ nomad_consul_verify_ssl }}"
     {% endif %}
 }
