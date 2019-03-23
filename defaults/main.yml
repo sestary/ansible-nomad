@@ -106,10 +106,10 @@ nomad_servers: "\
 nomad_gather_server_facts: false
 
 ### Consul
-nomad_use_nomad: false
-nomad_nomad_address: "localhost:8500"
-nomad_nomad_servers_service_name: "nomad-servers"
-nomad_nomad_clients_service_name: "nomad-clients"
+nomad_use_consul: false
+nomad_consul_address: "localhost:8500"
+nomad_consul_servers_service_name: "nomad-servers"
+nomad_consul_clients_service_name: "nomad-clients"
 
 
 ### ACLs
