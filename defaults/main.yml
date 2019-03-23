@@ -140,13 +140,13 @@ nomad_docker_dmsetup: true
 ### TLS
 nomad_tls_enable: "{{ lookup('env','NOMAD_TLS_ENABLE') | default(false, true) }}"
 nomad_tls_src_files: "{{ lookup('env','NOMAD_TLS_SRC_FILES') | default(role_path+'/files', true) }}"
-
 nomad_tls_dir: "{{ lookup('env','NOMAD_TLS_DIR') | default('/etc/nomad/ssl', true) }}"
 
 nomad_tls_ca_crt: "{{ lookup('env','NOMAD_TLS_CA_CRT') | default('ca.crt', true) }}"
 nomad_tls_server_crt: "{{ lookup('env','NOMAD_SERVER_CRT') | default('server.crt', true) }}"
 nomad_tls_server_key: "{{ lookup('env','NOMAD_SERVER_KEY') | default('server.key', true) }}"
 nomad_tls_copy_keys: true
+nomad_tls_files_remote_src: false
 
 nomad_verify_server_hostname: true
 nomad_verify_https_client: true
