@@ -41,6 +41,7 @@ consul {
     cert_file = "{{ nomad_tls_config_path }}/{{ nomad_tls_server_crt }}"
     key_file = "{{ nomad_tls_config_path }}/{{ nomad_tls_server_key }}"
     verify_ssl = {{ nomad_consul_verify_ssl | bool | lower }}
+    ssl = {{ nomad_consul_ssl | bool | lower }}
     {% endif %}
 }
 {% endif %}

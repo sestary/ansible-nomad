@@ -111,6 +111,7 @@ nomad_consul_token: ""
 nomad_consul_address: "localhost:8500"
 nomad_consul_servers_service_name: "nomad-servers"
 nomad_consul_clients_service_name: "nomad-clients"
+nomad_consul_ssl: {{ nomad_tls_enable | default(false, true) }}
 nomad_consul_verify_ssl: true
 
 ### ACLs
